@@ -153,8 +153,8 @@ export default function HomePage() {
           <p className="section-label mb-3">Get In Touch</p>
           <h2 className="section-title mb-5">Ready to Work Together?</h2>
           <p className="text-gray-500 mb-8 text-lg">
-            Whether it's a Sunday service, a live event, or church media automation —
-            let's talk about what you need.
+            Whether it&apos;s a Sunday service, a live event, or church media automation —
+            let&apos;s talk about what you need.
           </p>
           <Link href="/contact" className="btn-primary text-base px-8 py-4">
             Contact Us <ArrowRight size={18} />

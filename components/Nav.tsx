@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Zap } from 'lucide-react'
 
@@ -33,13 +34,15 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="text-white font-display font-bold tracking-widest uppercase" style={{ fontSize: '1.1rem', letterSpacing: '0.15em' }}>
-            EASTCOAST
-          </span>
-          <span className="font-display font-black tracking-widest uppercase text-[#1a7fe8]" style={{ fontSize: '1.4rem', letterSpacing: '0.2em', lineHeight: 1 }}>
-            AVL
-          </span>
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="Eastcoast AVL"
+            width={140}
+            height={60}
+            className="object-contain"
+            priority
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
