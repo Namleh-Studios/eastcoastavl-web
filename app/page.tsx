@@ -33,18 +33,18 @@ export default function HomePage() {
         </div>
         <div className="wave-bottom">
           <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" fill="white" />
+            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" />
           </svg>
         </div>
       </section>
 
       {/* Services overview */}
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="section-label mb-3">What We Do</p>
             <h2 className="section-title">Full-Service AVL Production</h2>
-            <p className="text-gray-500 mt-4 max-w-xl mx-auto">
+            <p className="text-[var(--text-secondary)] mt-4 max-w-xl mx-auto">
               From Sunday morning services to large-scale live events, we deliver
               professional audio, video, and lighting solutions.
             </p>
@@ -74,8 +74,8 @@ export default function HomePage() {
                 >
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-display font-bold text-[#0a0f2e] mb-3">{service.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
+                <h3 className="text-xl font-display font-bold mb-3" style={{ color: 'var(--text-primary)' }}>{service.title}</h3>
+                <p className="text-[var(--text-secondary)] text-sm leading-relaxed">{service.description}</p>
               </div>
             ))}
           </div>
@@ -88,17 +88,17 @@ export default function HomePage() {
       </section>
 
       {/* Why us */}
-      <section className="py-24 bg-[#f8fafc]">
+      <section className="py-24" style={{ background: 'var(--bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
               <p className="section-label mb-3">Why Eastcoast AVL</p>
               <h2 className="section-title mb-6">Built by People Who Do This</h2>
-              <p className="text-gray-500 leading-relaxed mb-4">
+              <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
                 We&apos;re not a vendor — we&apos;re working professionals with years of hands-on
                 experience behind the console, on the lighting rig, and behind the camera.
               </p>
-              <p className="text-gray-500 leading-relaxed mb-8">
+              <p className="text-[var(--text-secondary)] leading-relaxed mb-8">
                 Whether it&apos;s a weekly church service or a large-scale production, we bring
                 the same level of expertise and attention to detail to every project.
               </p>
@@ -106,7 +106,7 @@ export default function HomePage() {
                 About Us <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="bg-[#0a0f2e] rounded-3xl p-10">
+            <div className="bg-[#0a0f2e] dark:bg-[#050a1a] rounded-3xl p-10">
               <div className="grid grid-cols-2 gap-8 text-center">
                 {[
                   { value: '100+', label: 'Events Produced' },
@@ -128,11 +128,11 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="section-label mb-3">Get In Touch</p>
           <h2 className="section-title mb-5">Ready to Work Together?</h2>
-          <p className="text-gray-500 mb-8 text-lg">
+          <p className="text-[var(--text-secondary)] mb-8 text-lg">
             Whether it&apos;s a Sunday service, a live event, or a full system installation —
             let&apos;s talk about what you need.
           </p>

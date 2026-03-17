@@ -52,12 +52,12 @@ export default function ServicesPage() {
         </div>
         <div className="wave-bottom">
           <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" fill="white" />
+            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" />
           </svg>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
@@ -65,8 +65,8 @@ export default function ServicesPage() {
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-[#1a7fe8]" style={{ background: 'rgba(26,127,232,0.08)' }}>
                   {service.icon}
                 </div>
-                <h3 className="font-display font-bold text-xl text-[#0a0f2e] mb-3">{service.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
+                <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'var(--text-primary)' }}>{service.title}</h3>
+                <p className="text-[var(--text-secondary)] text-sm leading-relaxed">{service.description}</p>
               </div>
             ))}
           </div>

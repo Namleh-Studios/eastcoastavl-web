@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import ThemeProvider from '../components/ThemeProvider'
 
 export const metadata: Metadata = {
   title: {
@@ -22,11 +23,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Nav />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -19,18 +19,18 @@ export default function AboutPage() {
         </div>
         <div className="wave-bottom">
           <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" fill="white" />
+            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" />
           </svg>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
               <p className="section-label mb-3">Our Story</p>
               <h2 className="section-title mb-6">We Know What It Takes</h2>
-              <div className="space-y-4 text-gray-500 leading-relaxed">
+              <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed">
                 <p>
                   Eastcoast AVL started with a simple belief: churches and live events deserve
                   the same quality of technical production that major touring acts and broadcast
@@ -47,7 +47,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="bg-[#0a0f2e] rounded-3xl p-10 text-center">
+            <div className="bg-[#0a0f2e] dark:bg-[#050a1a] rounded-3xl p-10 text-center">
               <div className="grid grid-cols-2 gap-8">
                 {[
                   { value: '100+', label: 'Events Produced' },
@@ -68,7 +68,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#f8fafc]">
+      <section className="py-16" style={{ background: 'var(--bg-secondary)' }}>
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="section-title mb-5">Want to Work With Us?</h2>
           <Link href="/contact" className="btn-primary">
