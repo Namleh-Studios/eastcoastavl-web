@@ -1,5 +1,5 @@
 {
-  "name": "eastcoastavl",
+  "name": "eastcoastavl-web",
   "compatibility_date": "2026-03-31",
   "assets": {
     "directory": "bin/Release/net10.0/publish/wwwroot",
