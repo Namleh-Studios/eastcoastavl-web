@@ -1,0 +1,97 @@
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@implements IDisposable
+
+<header class="site-nav">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/">
+            <img src="logo.png" alt="Eastcoast AVL" width="140" height="60" class="object-contain" />
+        </a>
+
+        <nav class="md-flex hidden items-center gap-8">
+            @foreach (var link in _navLinks)
+            {
+                <a href="@link.Href"
+                   class="nav-link @(IsActive(link.Href) ? "active" : "")">
+                    @link.Label
+                </a>
+            }
+            <ThemeToggle />
+            <a href="/contact" class="nav-cta">Get A Quote</a>
+        </nav>
+
+        <div class="flex items-center gap-2 md-hidden">
+            <ThemeToggle />
+            <button class="theme-toggle" @onclick="ToggleMenu" aria-label="Toggle menu">
+                @if (_open)
+                {
+                    <Icon Name="x" Size="24" />
+                }
+                else
+                {
+                    <Icon Name="menu" Size="24" />
+                }
+            </button>
+        </div>
+    </div>
+
+    @if (_open)
+    {
+        <div class="mobile-menu">
+            <nav class="flex flex-col px-6 p-6 gap-1">
+                @foreach (var link in _navLinks)
+                {
+                    <a href="@link.Href" class="mobile-link" @onclick="CloseMenu">@link.Label</a>
+                }
+                <a href="/contact" class="btn-primary justify-center mt-4" style="padding:0.75rem;" @onclick="CloseMenu">
+                    Get A Quote
+                </a>
+            </nav>
+        </div>
+    }
+</header>
+
+@code {
+    private bool _open;
+    private readonly record struct NavLink(string Href, string Label);
+
+    private static readonly NavLink[] _navLinks =
+    [
+        new("/", "Home"),
+        new("/about", "About"),
+        new("/services", "Services"),
+        new("/contact", "Contact"),
+    ];
+
+    protected override void OnInitialized()
+    {
+        Navigation.LocationChanged += OnLocationChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Pure JS scroll detection — no interop round-trips needed for cosmetic class toggle
+            await JS.InvokeVoidAsync("eval",
+                "window.addEventListener('scroll',()=>document.querySelector('.site-nav')?.classList.toggle('scrolled',window.scrollY>20))");
+        }
+    }
+
+    private bool IsActive(string href)
+    {
+        var path = new Uri(Navigation.Uri).AbsolutePath;
+        return href == "/" ? path == "/" : path.StartsWith(href, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private void ToggleMenu() => _open = !_open;
+    private void CloseMenu() => _open = false;
+
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        _open = false;
+        StateHasChanged();
+    }
+
+    public void Dispose() => Navigation.LocationChanged -= OnLocationChanged;
+}

@@ -1,0 +1,134 @@
+@page "/"
+
+<PageTitle>Eastcoast AVL — Audio · Video · Lighting</PageTitle>
+
+@* Hero *@
+<section class="hero-bg" style="min-height:100vh;display:flex;align-items:center;padding-top:4rem;">
+    <div class="max-w-7xl mx-auto px-6 py-24 w-full hero-content">
+        <div class="max-w-3xl">
+            <p class="section-label mb-4">Audio · Video · Lighting</p>
+            <h1 class="font-display font-black text-white leading-tight mb-6"
+                style="font-size:clamp(3rem,8vw,6rem);letter-spacing:-0.02em;line-height:0.95;">
+                EASTCOAST<br />
+                <span class="text-blue">AVL</span>
+            </h1>
+            <p class="text-white-70 text-xl leading-relaxed mb-10 max-w-xl">
+                Professional audio, video, and lighting for churches, live events,
+                and broadcast production. Serving Jacksonville, NC and beyond.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="/services" class="btn-primary">
+                    Our Services <Icon Name="arrow-right" Size="16" />
+                </a>
+                <a href="/contact" class="btn-outline">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="wave-bottom">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" />
+        </svg>
+    </div>
+</section>
+
+@* Services overview *@
+<section class="py-24 bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center" style="margin-bottom:4rem;">
+            <p class="section-label mb-3">What We Do</p>
+            <h2 class="section-title">Full-Service AVL Production</h2>
+            <p class="text-secondary mt-4 max-w-xl mx-auto">
+                From Sunday morning services to large-scale live events, we deliver
+                professional audio, video, and lighting solutions.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md-grid-3 gap-8">
+            @foreach (var svc in _highlights)
+            {
+                <div class="card p-8">
+                    <div class="icon-box mb-5">
+                        <Icon Name="@svc.Icon" Size="28" />
+                    </div>
+                    <h3 class="text-xl font-display font-bold mb-3 text-primary">@svc.Title</h3>
+                    <p class="text-secondary text-sm leading-relaxed">@svc.Description</p>
+                </div>
+            }
+        </div>
+        <div class="text-center mt-10">
+            <a href="/services" class="btn-outline">
+                View All Services <Icon Name="arrow-right" Size="16" />
+            </a>
+        </div>
+    </div>
+</section>
+
+@* Why us *@
+<section class="py-24 bg-secondary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md-grid-2 gap-16 items-center">
+            <div>
+                <p class="section-label mb-3">Why Eastcoast AVL</p>
+                <h2 class="section-title mb-6">Built by People Who Do This</h2>
+                <p class="text-secondary leading-relaxed mb-4">
+                    We're not a vendor — we're working professionals with years of hands-on
+                    experience behind the console, on the lighting rig, and behind the camera.
+                </p>
+                <p class="text-secondary leading-relaxed mb-8">
+                    Whether it's a weekly church service or a large-scale production, we bring
+                    the same level of expertise and attention to detail to every project.
+                </p>
+                <a href="/about" class="btn-primary">
+                    About Us <Icon Name="arrow-right" Size="16" />
+                </a>
+            </div>
+            <div class="stats-box">
+                <div class="grid grid-cols-2 gap-8">
+                    @foreach (var stat in _stats)
+                    {
+                        <div>
+                            <p class="stat-value">@stat.Value</p>
+                            <p class="text-white-50 text-sm">@stat.Label</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* CTA *@
+<section class="py-24 bg-primary">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+        <p class="section-label mb-3">Get In Touch</p>
+        <h2 class="section-title mb-5">Ready to Work Together?</h2>
+        <p class="text-secondary mb-8 text-lg">
+            Whether it's a Sunday service, a live event, or a full system installation —
+            let's talk about what you need.
+        </p>
+        <a href="/contact" class="btn-primary" style="font-size:1rem;padding:1rem 2rem;">
+            Contact Us <Icon Name="arrow-right" Size="18" />
+        </a>
+    </div>
+</section>
+
+@code {
+    private record ServiceHighlight(string Icon, string Title, string Description);
+    private record Stat(string Value, string Label);
+
+    private static readonly ServiceHighlight[] _highlights =
+    [
+        new("mic", "Audio", "Live sound mixing, system design, installation, and technical direction for churches and live events."),
+        new("video", "Video", "Live broadcast, streaming, camera operation, video production, and display system integration."),
+        new("lightbulb", "Lighting", "Stage lighting design, programming, installation, and operation for worship and live productions."),
+    ];
+
+    private static readonly Stat[] _stats =
+    [
+        new("100+", "Events Produced"),
+        new("50+", "Church Clients"),
+        new("8+", "Years Experience"),
+        new("24/7", "Support Available"),
+    ];
+}

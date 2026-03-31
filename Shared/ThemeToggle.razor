@@ -1,0 +1,42 @@
+@inject IJSRuntime JS
+
+<button class="theme-toggle" @onclick="CycleTheme"
+        aria-label="@($"Current theme: {_theme}. Click to switch.")"
+        title="@($"Theme: {_theme}")">
+    @if (_theme == "light")
+    {
+        <Icon Name="sun" Size="16" />
+    }
+    else if (_theme == "dark")
+    {
+        <Icon Name="moon" Size="16" />
+    }
+    else
+    {
+        <Icon Name="monitor" Size="16" />
+    }
+</button>
+
+@code {
+    private string _theme = "system";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _theme = await JS.InvokeAsync<string>("themeInterop.getTheme");
+            StateHasChanged();
+        }
+    }
+
+    private async Task CycleTheme()
+    {
+        _theme = _theme switch
+        {
+            "system" => "light",
+            "light" => "dark",
+            _ => "system"
+        };
+        await JS.InvokeVoidAsync("themeInterop.setTheme", _theme);
+    }
+}

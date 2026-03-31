@@ -1,0 +1,145 @@
+@page "/contact"
+
+<PageTitle>Contact | Eastcoast AVL</PageTitle>
+
+<section class="hero-bg pt-32 pb-24" style="position:relative;">
+    <div class="max-w-7xl mx-auto px-6 hero-content">
+        <p class="section-label mb-4">Get In Touch</p>
+        <h1 class="font-display font-black text-white leading-tight mb-6"
+            style="font-size:clamp(2.5rem,6vw,5rem);">
+            Let's Talk About<br />
+            <span class="text-blue">Your Project</span>
+        </h1>
+        <p class="text-white-60 text-xl max-w-2xl leading-relaxed">
+            Whether you need AVL production for an event, a church system installation,
+            or need ongoing technical support — we'd love to hear from you.
+        </p>
+    </div>
+    <div class="wave-bottom">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" />
+        </svg>
+    </div>
+</section>
+
+<section class="py-24 bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md-grid-2 gap-16">
+            <div>
+                <h2 class="section-title mb-8">Contact Information</h2>
+                <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-box-sm">
+                            <Icon Name="mail" Size="18" />
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm mb-1 text-primary">Email</p>
+                            <a href="mailto:info@eastcoastavl.com" class="text-secondary footer-link">
+                                info@eastcoastavl.com
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="icon-box-sm">
+                            <Icon Name="map-pin" Size="18" />
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm mb-1 text-primary">Location</p>
+                            <p class="text-secondary">Jacksonville, NC</p>
+                            <p class="text-muted text-sm">Serving the East Coast</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box mt-12">
+                    <p class="font-semibold mb-2 text-primary">Need a Quote?</p>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Tell us about your event or project and we'll get back to you
+                        with a custom proposal within 24 hours.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                @if (_submitted)
+                {
+                    <div class="flex flex-col items-center justify-center text-center" style="height:100%;padding:4rem 0;">
+                        <div class="rounded-full flex items-center justify-center mb-4 text-blue"
+                             style="width:4rem;height:4rem;background:rgba(26,127,232,0.1);">
+                            <Icon Name="send" Size="28" />
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-2 text-primary">Message Sent!</h3>
+                        <p class="text-secondary">We'll get back to you within 24 hours.</p>
+                    </div>
+                }
+                else
+                {
+                    <EditForm Model="_model" OnValidSubmit="HandleSubmit" FormName="contact" style="display:flex;flex-direction:column;gap:1.25rem;">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="form-label">First Name</label>
+                                <InputText @bind-Value="_model.FirstName" class="form-input" required />
+                            </div>
+                            <div>
+                                <label class="form-label">Last Name</label>
+                                <InputText @bind-Value="_model.LastName" class="form-input" required />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label">Email</label>
+                            <InputText @bind-Value="_model.Email" type="email" class="form-input" required />
+                        </div>
+                        <div>
+                            <label class="form-label">Organization / Church</label>
+                            <InputText @bind-Value="_model.Organization" class="form-input" />
+                        </div>
+                        <div>
+                            <label class="form-label">I'm interested in</label>
+                            <InputSelect @bind-Value="_model.Interest" class="form-input">
+                                <option>Live Sound Production</option>
+                                <option>Video Production &amp; Broadcast</option>
+                                <option>Lighting Design</option>
+                                <option>System Installation</option>
+                                <option>Event Technical Direction</option>
+                                <option>Other</option>
+                            </InputSelect>
+                        </div>
+                        <div>
+                            <label class="form-label">Message</label>
+                            <InputTextArea @bind-Value="_model.Message" class="form-input" rows="5" required />
+                        </div>
+                        <button type="submit" class="btn-primary justify-center w-full" style="padding:1rem;"
+                                disabled="@_loading">
+                            @(_loading ? "Sending..." : "Send Message") <Icon Name="send" Size="16" />
+                        </button>
+                    </EditForm>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private bool _submitted;
+    private bool _loading;
+    private ContactModel _model = new();
+
+    private async Task HandleSubmit()
+    {
+        _loading = true;
+        StateHasChanged();
+        // TODO: wire up to API endpoint
+        await Task.Delay(1000);
+        _submitted = true;
+        _loading = false;
+    }
+
+    private class ContactModel
+    {
+        public string FirstName { get; set; } = "";
+        public string LastName { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string Organization { get; set; } = "";
+        public string Interest { get; set; } = "Live Sound Production";
+        public string Message { get; set; } = "";
+    }
+}

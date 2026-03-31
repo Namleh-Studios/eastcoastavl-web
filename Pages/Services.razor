@@ -1,0 +1,67 @@
+@page "/services"
+
+<PageTitle>Services | Eastcoast AVL</PageTitle>
+
+<section class="hero-bg pt-32 pb-24" style="position:relative;">
+    <div class="max-w-7xl mx-auto px-6 hero-content">
+        <p class="section-label mb-4">What We Offer</p>
+        <h1 class="font-display font-black text-white leading-tight mb-6"
+            style="font-size:clamp(2.5rem,6vw,5rem);">
+            Professional AVL<br />
+            <span class="text-blue">Services</span>
+        </h1>
+        <p class="text-white-60 text-xl max-w-2xl leading-relaxed">
+            From weekly church services to large-scale live productions — we provide
+            the technical expertise, gear, and crew to make it happen.
+        </p>
+    </div>
+    <div class="wave-bottom">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 80L1440 80L1440 40C1200 80 960 0 720 40C480 80 240 0 0 40L0 80Z" />
+        </svg>
+    </div>
+</section>
+
+<section class="py-24 bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md-grid-2 lg-grid-3 gap-8">
+            @foreach (var svc in _services)
+            {
+                <div class="card p-8">
+                    <div class="icon-box mb-5">
+                        <Icon Name="@svc.Icon" Size="28" />
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-3 text-primary">@svc.Title</h3>
+                    <p class="text-secondary text-sm leading-relaxed">@svc.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="py-16 bg-navy-900">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="font-display font-black text-white mb-5"
+            style="font-size:clamp(1.8rem,3vw,2.5rem);">
+            Ready to Elevate Your Production?
+        </h2>
+        <p class="text-white-60 mb-8">Let's talk about how Eastcoast AVL can support your next event or service.</p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="/contact" class="btn-primary">Get In Touch <Icon Name="arrow-right" Size="16" /></a>
+        </div>
+    </div>
+</section>
+
+@code {
+    private record Service(string Icon, string Title, string Description);
+
+    private static readonly Service[] _services =
+    [
+        new("mic", "Live Sound Production", "Front-of-house and monitor mixing for church services, conferences, concerts, and live events of any size."),
+        new("video", "Video Production & Broadcast", "Multi-camera live production, streaming setup, IMAG, and broadcast-quality video for churches and live events."),
+        new("lightbulb", "Lighting Design & Operation", "Stage lighting design, programming, and operation for worship environments, theatrical productions, and live events."),
+        new("radio", "Streaming & Online Services", "End-to-end live streaming setup and operation for YouTube, Facebook, Vimeo, Resi, and custom RTMP destinations."),
+        new("settings", "System Installation", "AVL system design and installation for churches and venues — from consoles and speakers to cameras and lighting rigs."),
+        new("calendar", "Event Technical Direction", "Full technical direction for conferences, galas, and large-scale events — crew management, gear, logistics, and execution."),
+    ];
+}
