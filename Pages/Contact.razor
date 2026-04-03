@@ -11,8 +11,8 @@
             <span class="text-blue">Your Project</span>
         </h1>
         <p class="text-white-60 text-xl max-w-2xl leading-relaxed">
-            Whether you need AVL production for an event, a church system installation,
-            or need ongoing technical support — we'd love to hear from you.
+            Whether you need audio, video, lighting, IT support, security cameras,
+            or a full system installation — we'd love to hear from you.
         </p>
     </div>
     <div class="wave-bottom">
@@ -89,17 +89,21 @@
                             <InputText @bind-Value="_model.Email" type="email" class="form-input" required />
                         </div>
                         <div>
-                            <label class="form-label">Organization / Church</label>
+                            <label class="form-label">Organization / Business</label>
                             <InputText @bind-Value="_model.Organization" class="form-input" />
                         </div>
                         <div>
                             <label class="form-label">I'm interested in</label>
                             <InputSelect @bind-Value="_model.Interest" class="form-input">
-                                <option>Live Sound Production</option>
-                                <option>Video Production &amp; Broadcast</option>
-                                <option>Lighting Design</option>
+                                <option>Audio / Video</option>
+                                <option>Stage Lighting</option>
+                                <option>IT Setup &amp; Support</option>
+                                <option>Security Cameras</option>
                                 <option>System Installation</option>
-                                <option>Event Technical Direction</option>
+                                <option>Sales &amp; Equipment</option>
+                                <option>Training</option>
+                                <option>Consulting</option>
+                                <option>Production Operation</option>
                                 <option>Other</option>
                             </InputSelect>
                         </div>
@@ -139,7 +143,7 @@
         public string LastName { get; set; } = "";
         public string Email { get; set; } = "";
         public string Organization { get; set; } = "";
-        public string Interest { get; set; } = "Live Sound Production";
+        public string Interest { get; set; } = "Audio / Video";
         public string Message { get; set; } = "";
     }
 }
