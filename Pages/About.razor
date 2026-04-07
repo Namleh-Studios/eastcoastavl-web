@@ -1,19 +1,30 @@
 @page "/about"
 
-<PageTitle>About | Eastcoast AVL</PageTitle>
+<PageTitle>About Justin Shepherd | Eastcoast AVL</PageTitle>
 
-<section class="hero-bg pt-32 pb-24" style="position:relative;">
-    <div class="max-w-7xl mx-auto px-6 hero-content">
-        <p class="section-label mb-4">About Us</p>
-        <h1 class="font-display font-black text-white leading-tight mb-6"
-            style="font-size:clamp(2.5rem,6vw,5rem);">
-            Built by People<br />
-            <span class="text-blue">Who Do This.</span>
-        </h1>
-        <p class="text-white-60 text-xl max-w-2xl leading-relaxed">
-            Eastcoast AVL was founded by working professionals with years of hands-on
-            experience in audio, video, lighting, IT, and security systems.
-        </p>
+@* Hero *@
+<section class="hero-bg" style="min-height:80vh;display:flex;align-items:center;padding-top:4rem;">
+    <div class="max-w-7xl mx-auto px-6 py-24 w-full hero-content">
+        <div class="max-w-3xl">
+            <p class="section-label mb-4">Meet the Founder</p>
+            <h1 class="font-display font-black text-white leading-tight mb-6"
+                style="font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;">
+                30+ Years of AVL Experience.<br />
+                <span class="text-blue">From Churches to<br />30,000-Seat Concerts.</span>
+            </h1>
+            <p class="text-white-70 text-xl leading-relaxed mb-10 max-w-2xl">
+                Helping churches, venues, and events create powerful, professional
+                experiences through audio, video, lighting, and system design.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="/contact" class="btn-primary">
+                    Book a Consultation <Icon Name="arrow-right" Size="16" />
+                </a>
+                <a href="/services" class="btn-outline">
+                    See Our Work <Icon Name="arrow-right" Size="16" />
+                </a>
+            </div>
+        </div>
     </div>
     <div class="wave-bottom">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,34 +33,38 @@
     </div>
 </section>
 
+@* About Justin *@
 <section class="py-24 bg-primary">
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md-grid-2 gap-16 items-center">
             <div>
-                <p class="section-label mb-3">Our Story</p>
-                <h2 class="section-title mb-6">We Know What It Takes</h2>
+                <p class="section-label mb-3">About Justin</p>
+                <h2 class="section-title mb-6">Who You're Working With</h2>
                 <div style="display:flex;flex-direction:column;gap:1rem;" class="text-secondary leading-relaxed">
                     <p>
-                        Eastcoast AVL started with a simple belief: churches, schools, homes,
-                        and businesses deserve professional-grade technology solutions without
-                        the agency overhead.
+                        Justin Shepherd is the driving force behind Eastcoast AVL. With over
+                        three decades in audio, video, and lighting, he has helped churches, venues,
+                        and event organizations transform their production quality and team culture.
                     </p>
                     <p>
-                        We're based in Jacksonville, NC, and we've spent years behind the console,
-                        on the lighting rig, behind the camera, and in the server room. From
-                        Sunday services and school auditoriums to home theaters and commercial
-                        security systems — we've done it all.
+                        From training volunteer teams in churches to running large-scale concerts
+                        for up to 30,000 people, Justin brings both technical mastery and proven
+                        leadership to every project. He's worked with nationally touring artists
+                        including Train, Maroon 5, Alice Cooper, ZZ Top, Tim McGraw, Lynyrd
+                        Skynyrd, and Toby Keith — handling full show execution from load-in
+                        to load-out.
                     </p>
                     <p>
-                        Every project we take on is personal — whether it's a security camera
-                        install at your home or a full production system for your church, we treat
-                        it like it's our own. That's the Eastcoast difference.
+                        He has led complete facility remodels, designed and installed complex
+                        AVL systems, grown production teams from 15 to 53 members, and built
+                        revenue-generating events from the ground up. When you work with
+                        Eastcoast AVL, you're getting real-world experience — not just theory.
                     </p>
                 </div>
             </div>
             <div class="stats-box">
                 <div class="grid grid-cols-2 gap-8">
-                    @foreach (var stat in _stats)
+                    @foreach (var stat in _aboutStats)
                     {
                         <div>
                             <p class="stat-value">@stat.Value</p>
@@ -62,23 +77,193 @@
     </div>
 </section>
 
-<section class="py-16 bg-secondary">
+@* Experience Highlights *@
+<section class="py-24 bg-secondary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center" style="margin-bottom:3.5rem;">
+            <p class="section-label mb-3">Experience</p>
+            <h2 class="section-title">Career Highlights</h2>
+        </div>
+        <div class="grid grid-cols-1 md-grid-2 gap-8">
+            @foreach (var h in _highlights)
+            {
+                <div class="card p-8">
+                    <div class="icon-box mb-5">
+                        <Icon Name="@h.Icon" Size="28" />
+                    </div>
+                    <h3 class="text-xl font-display font-bold mb-3 text-primary">@h.Title</h3>
+                    <p class="text-secondary text-sm leading-relaxed">@h.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@* What Makes Us Different *@
+<section class="py-24 bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md-grid-2 gap-16 items-start">
+            <div>
+                <p class="section-label mb-3">Why Eastcoast AVL</p>
+                <h2 class="section-title mb-6">
+                    We Don't Just Install Systems —<br />We Build Experiences
+                </h2>
+                <p class="text-secondary leading-relaxed">
+                    Most AVL companies stop at gear. Eastcoast AVL goes further — we design
+                    systems that actually work in real life, train your team to run them
+                    confidently, and help you build a production culture that lasts.
+                </p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+                @foreach (var edge in _edges)
+                {
+                    <div class="flex items-start gap-4">
+                        <div class="icon-box-sm shrink-0" style="margin-top:0.125rem;">
+                            <Icon Name="@edge.Icon" Size="18" />
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">@edge.Title</p>
+                            <p class="text-secondary text-sm">@edge.Description</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@* Core Expertise *@
+<section class="py-24 bg-secondary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center" style="margin-bottom:3rem;">
+            <p class="section-label mb-3">Core Expertise</p>
+            <h2 class="section-title">Decades of Hands-On Experience</h2>
+        </div>
+        <div class="grid grid-cols-2 md-grid-3 gap-6">
+            @foreach (var exp in _expertise)
+            {
+                <div class="card p-6 text-center">
+                    <div class="icon-box mx-auto mb-4">
+                        <Icon Name="@exp.Icon" Size="28" />
+                    </div>
+                    <p class="font-display font-black text-blue text-2xl mb-1">@exp.Years</p>
+                    <p class="font-semibold text-primary text-sm mb-1">@exp.Title</p>
+                    <p class="text-muted text-xs">@exp.Detail</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@* Proven Results *@
+<section class="py-24" style="background:var(--navy-900);">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <p class="section-label mb-3">Proven Results</p>
+        <h2 class="font-display font-bold text-white mb-3"
+            style="font-size:clamp(2rem,4vw,3rem);">
+            Real Impact, Real Numbers
+        </h2>
+        <p class="text-white-50 max-w-2xl mx-auto" style="margin-bottom:3rem;">
+            From revenue-generating events to building teams from scratch — the results speak
+            for themselves.
+        </p>
+        <div class="grid grid-cols-2 md-grid-4 gap-8">
+            @foreach (var r in _results)
+            {
+                <div>
+                    <p class="stat-value">@r.Value</p>
+                    <p class="text-white-50 text-sm">@r.Label</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@* Vision *@
+<section class="py-24 bg-primary">
     <div class="max-w-3xl mx-auto px-6 text-center">
-        <h2 class="section-title mb-5">Want to Work With Us?</h2>
-        <a href="/contact" class="btn-primary">
-            Get In Touch <Icon Name="arrow-right" Size="16" />
-        </a>
+        <p class="section-label mb-3">Looking Ahead</p>
+        <h2 class="section-title mb-6">The Vision</h2>
+        <p class="text-secondary leading-relaxed text-lg mb-6">
+            Justin is passionate about creating environments where technology enhances experience.
+            Whether it's a church service, concert, or community event, the mission is simple:
+        </p>
+        <p class="font-display font-bold text-primary text-xl">
+            Deliver excellence, build strong teams, and create unforgettable experiences
+            for every audience.
+        </p>
+    </div>
+</section>
+
+@* CTA *@
+<section class="py-24 bg-secondary">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="section-title mb-5">Let's Build Something Incredible</h2>
+        <p class="text-secondary mb-8 text-lg">
+            Whether you're upgrading your church, planning an event, or need a full AVL system —
+            we can help you do it right the first time.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="/contact" class="btn-primary" style="font-size:1rem;padding:1rem 2rem;">
+                Book a Consultation <Icon Name="arrow-right" Size="18" />
+            </a>
+        </div>
+        <p class="text-muted text-sm mt-10">
+            <Icon Name="mail" Size="14" /> justin@eastcoastavl.com
+        </p>
     </div>
 </section>
 
 @code {
     private record Stat(string Value, string Label);
+    private record Highlight(string Icon, string Title, string Description);
+    private record Edge(string Icon, string Title, string Description);
+    private record Expertise(string Icon, string Years, string Title, string Detail);
 
-    private static readonly Stat[] _stats =
+    private static readonly Stat[] _aboutStats =
     [
-        new("100+", "Projects Completed"),
-        new("50+", "Clients Served"),
-        new("8+", "Years Experience"),
-        new("24/7", "Support Available"),
+        new("30+", "Years in AVL"),
+        new("53", "Team Members Built"),
+        new("40K+", "Attendees Served"),
+        new("30K", "Seat Venue Experience"),
+    ];
+
+    private static readonly Highlight[] _highlights =
+    [
+        new("mic", "Concert & Live Events",
+            "Large-scale concert production in venues seating up to 30,000. Worked with nationally touring artists including Train, Maroon 5, Alice Cooper, ZZ Top, Tim McGraw, Lynyrd Skynyrd, Toby Keith, and many more. Full show execution — stage builds, system deployment, load-in to load-out."),
+        new("radio", "Church Production Leadership",
+            "Production Director overseeing multi-campus operations at Catalyst Church. Grew the production team from 15 to 53 members. Built strong volunteer cultures, modernized outdated systems, and designed portable AVL rigs for multi-venue deployment. Hosted major touring acts including Newsboys — meeting every timeline and setting load-in/load-out records."),
+        new("settings", "System Design & Installation",
+            "Full AVL and infrastructure builds including an $80,000 venue installation at the Rustic Barn — integrated audio/video, Bluetooth distribution, room controls, full networking, WiFi, and security cameras. Led complete facility remodels covering networking, audio, video, and lighting."),
+        new("calendar", "Large-Scale Event Production",
+            "Designed and built a mile-long Christmas light experience at ELJ Farms (now Christmas Town) — 40,000+ attendees and $300,000+ revenue in just two months. Produced community events for up to 6,000 people including Christmas tree lightings and National Night Out with Jacksonville PD."),
+    ];
+
+    private static readonly Edge[] _edges =
+    [
+        new("mic", "Real-World Concert Experience", "Not just installs — decades of live show production with nationally touring artists."),
+        new("radio", "Deep Church Production Understanding", "Years of hands-on worship AVL, volunteer development, and service flow design."),
+        new("users", "Proven Team-Building Systems", "Scaled production departments from scratch and developed leadership pipelines that last."),
+        new("wifi", "Networking + AVL Integration", "Full-stack technical expertise — from audio consoles to network infrastructure and security."),
+        new("settings", "Professional Execution", "Concert-level discipline on every project. Timelines met, records set."),
+    ];
+
+    private static readonly Expertise[] _expertise =
+    [
+        new("mic", "30+", "Audio Engineering", "Church & Live Events"),
+        new("video", "25+", "Video & Lighting", "Systems Design & Operation"),
+        new("calendar", "15+", "Concerts & Festivals", "Touring & Large Events"),
+        new("users", "10+", "Leadership", "Team Development & Growth"),
+        new("wifi", "10+", "Networking & IT", "AVL Infrastructure"),
+        new("shield", "5+", "Security Systems", "Cameras & Surveillance"),
+    ];
+
+    private static readonly Stat[] _results =
+    [
+        new("$300K+", "Revenue From One Event"),
+        new("40K+", "Attendees Served"),
+        new("15 → 53", "Team Growth"),
+        new("30K", "Seat Venue Experience"),
     ];
 }
