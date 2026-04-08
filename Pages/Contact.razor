@@ -1,4 +1,5 @@
 @page "/contact"
+@inject HttpClient Http
 
 <PageTitle>Contact | Eastcoast AVL</PageTitle>
 
@@ -111,6 +112,12 @@
                             <label class="form-label">Message</label>
                             <InputTextArea @bind-Value="_model.Message" class="form-input" rows="5" required />
                         </div>
+                        @if (_error)
+                        {
+                            <p style="color:#ef4444;font-size:0.875rem;text-align:center;">
+                                Something went wrong. Please try again or email us directly.
+                            </p>
+                        }
                         <button type="submit" class="btn-primary justify-center w-full" style="padding:1rem;"
                                 disabled="@_loading">
                             @(_loading ? "Sending..." : "Send Message") <Icon Name="send" Size="16" />
@@ -125,15 +132,35 @@
 @code {
     private bool _submitted;
     private bool _loading;
+    private bool _error;
     private ContactModel _model = new();
 
     private async Task HandleSubmit()
     {
         _loading = true;
+        _error = false;
         StateHasChanged();
-        // TODO: wire up to API endpoint
-        await Task.Delay(1000);
-        _submitted = true;
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync("/api/contact", new
+            {
+                firstName = _model.FirstName,
+                lastName = _model.LastName,
+                email = _model.Email,
+                organization = _model.Organization,
+                interest = _model.Interest,
+                message = _model.Message,
+            });
+
+            _submitted = response.IsSuccessStatusCode;
+            _error = !response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            _error = true;
+        }
+
         _loading = false;
     }
 
