@@ -215,10 +215,10 @@
 </section>
 
 @code {
-    private record Stat(string Value, string Label);
-    private record Highlight(string Icon, string Title, string Description);
-    private record Edge(string Icon, string Title, string Description);
-    private record Expertise(string Icon, string Years, string Title, string Detail);
+    private sealed record Stat(string Value, string Label);
+    private sealed record Highlight(string Icon, string Title, string Description);
+    private sealed record Edge(string Icon, string Title, string Description);
+    private sealed record Expertise(string Icon, string Years, string Title, string Detail);
 
     private static readonly Stat[] _aboutStats =
     [
